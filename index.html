@@ -4,7 +4,232 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EV Battery Swapping</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+header {
+    background: #004d40;
+    color: white;
+    padding: 20px 0;
+}
+
+header .logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #80cbc4;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero {
+    background: 
+      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+      url('https://imgs.search.brave.com/LdbVF6dbTe1KFt90b5betjAVtQg0og5QPzisqKzwYLo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTIz/Njc0ODA0Ni9waG90/by9hLXZpZXctc2hv/d3MtYS1iYXR0ZXJ5/LXN3YXBwaW5nLXN0/YXRpb24tb24tdGhl/LXN0YW5kLW9mLWVs/ZWN0cmljLXR3by13/aGVlbGVyLW1hbnVm/YWN0dXJlci5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9VkNz/M0JCYTRtZEs4MUFO/ZzZnLTZldFVIbVot/amlyekp3T0EyMWJ6/b19zND0') no-repeat center center/cover;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.hero .btn {
+    background-color: #009688;
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: background 0.3s;
+}
+
+.hero .btn:hover {
+    background-color: #00796b;
+}
+
+
+section {
+    padding: 60px 0;
+}
+
+h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.step {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.step span {
+    display: block;
+    background-color: #009688;
+    color: white;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    margin: auto;
+    border-radius: 50%;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    padding-top: 25px;
+    height: 0;
+    
+}
+
+.video-wrapper iframe {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    border-radius: 10px;
+
+}
+
+.faq-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.faq-item h3 {
+    margin-bottom: 10px;
+}
+
+
+footer {
+    background: #004d40;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.faq-item {
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.faq-item.active {
+    background-color: #e0f2f1;
+}
+
+.faq-item p {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+}
+
+    </style>
 </head>
 <body>
 
@@ -120,7 +345,52 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script >
+        
+
+console.log("EV Battery Swapping Website Loaded");
+
+
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    item.addEventListener('click', () => {
+        item.classList.toggle('active');
+
+        const answer = item.querySelector('p');
+        if (item.classList.contains('active')) {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+            answer.style.maxHeight = 0;
+        }
+    });
+});
+
+window.addEventListener('load', () => {
+    faqItems.forEach(item => {
+        const answer = item.querySelector('p');
+        answer.style.maxHeight = 0;
+    });
+});
+
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealOnScroll = () => {
+    const windowHeight = window.innerHeight;
+    revealElements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+            el.classList.add('active');
+        } else {
+            el.classList.remove('active');
+        }
+    });
+};
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+    </script>
 </body>
 </html>
 
